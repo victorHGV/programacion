@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Mostrar Lista</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Titulo</th>
+      <th>Descripcion</th>
+      <th>Publicacion</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @posts.each do |post| %>
+      <tr>
+        <td><%= post.title %></td>
+        <td><%= post.body %></td>
+        <td><%= post.public %></td>
+        <td class="warning button"><%= link_to 'Mostrar', post %></td>
+        <td class="success button"><%= link_to 'Editar', edit_post_path(post) %></td>
+        <td class="alert button"><%= link_to 'Eiminar', post, method: :delete, data: { confirm: 'Esta seguro de querer eliminar' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'Nuevo Registro', new_post_path %>
